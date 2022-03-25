@@ -25,6 +25,12 @@ value:2908
 [AID_VENDOR_QTR]
 value:2909
 
+[AID_VENDOR_NXP_STRONGBOX]
+value:2910
+
+[AID_VENDOR_NXP_WEAVER]
+value:2911
+
 [vendor/bin/wcnss_filter]
 mode: 0755
 user: AID_BLUETOOTH
@@ -114,6 +120,18 @@ mode: 0755
 user: AID_RADIO
 group: AID_RADIO
 caps: NET_BIND_SERVICE
+
+[vendor/bin/hw/android.hardware.security.keymint-service.strongbox]
+mode: 0755
+user: AID_VENDOR_NXP_STRONGBOX
+group: AID_SYSTEM
+caps: SYS_ADMIN SYS_NICE
+
+[vendor/bin/hw/android.hardware.weaver@1.0-service]
+mode: 0755
+user: AID_VENDOR_NXP_WEAVER
+group: AID_SYSTEM
+caps: SYS_ADMIN SYS_NICE
 
 [vendor/bin/ims_rtp_daemon]
 mode: 0755
