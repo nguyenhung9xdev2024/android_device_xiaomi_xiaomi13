@@ -325,6 +325,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.powershare@1.0-service.xiaomi
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power-service-qti
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/power/config/kalama/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
@@ -337,7 +344,7 @@ PRODUCT_COPY_FILES += \
 # QCC
 PRODUCT_PACKAGES += \
     libgrpc++_unsecure.vendor
-    
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson
