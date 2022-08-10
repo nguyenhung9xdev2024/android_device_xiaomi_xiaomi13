@@ -321,6 +321,10 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
 #    XiaomiParts
 
+# Perf
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.perf@2.3.vendor
+    
 # PowerShare
 PRODUCT_PACKAGES += \
     vendor.lineage.powershare@1.0-service.xiaomi
