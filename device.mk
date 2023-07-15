@@ -321,6 +321,10 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
 #    XiaomiParts
 
+# PowerShare
+PRODUCT_PACKAGES += \
+    vendor.lineage.powershare@1.0-service.xiaomi
+    
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
@@ -368,7 +372,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
-    
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0 \

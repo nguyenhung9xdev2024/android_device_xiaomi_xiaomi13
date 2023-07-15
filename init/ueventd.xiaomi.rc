@@ -73,3 +73,6 @@ subsystem mi_display
 
 # xiaomi ntag
 /dev/ntag5-nci            0660   nfc        nfc
+
+# Battery
+/sys/class/qcom-battery                                 reverse_chg_mode                0644    system  system
