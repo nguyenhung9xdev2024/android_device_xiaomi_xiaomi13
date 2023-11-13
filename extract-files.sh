@@ -76,6 +76,9 @@ function blob_fixup() {
         vendor/bin/hw/dolbycodec2 | vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service | vendor/bin/hw/vendor.dolby.media.c2@1.0-service | vendor/lib64/hw/audio.primary.kalama.so)
             "${PATCHELF}" --add-needed "libstagefright_foundation-v33.so" "${2}"
             ;;
+         vendor/etc/init/hw/init.mi_thermald.rc|/vendor/etc/init/hw/init.qcom.usb.rc)
+            sed -i 's/on charger/on property:init.svc.vendor.charger=running/g' "${2}"
+            ;;    
     esac
 }
 
