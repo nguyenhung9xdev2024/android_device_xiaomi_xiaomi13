@@ -271,7 +271,7 @@ PRODUCT_PACKAGES += \
     init.kernel.post_boot.sh \
     init.kernel.post_boot-kalama.sh \
     init.qcom.early_boot.sh \
-    init.qcom.early_boot.sh
+    init.qcom.post_boot.sh
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom \
