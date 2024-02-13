@@ -324,7 +324,7 @@ PRODUCT_PACKAGES += \
 # PowerShare
 PRODUCT_PACKAGES += \
     vendor.lineage.powershare@1.0-service.xiaomi
-    
+
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
@@ -334,6 +334,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/properties/odm_fuxi.prop:$(TARGET_COPY_OUT_ODM)/etc/build_fuxi.prop \
     $(LOCAL_PATH)/configs/properties/odm_nuwa.prop:$(TARGET_COPY_OUT_ODM)/etc/build_nuwa.prop
 
+# QCC
+PRODUCT_PACKAGES += \
+    libgrpc++_unsecure.vendor
+    
 # QMI
 PRODUCT_PACKAGES += \
     libjson
