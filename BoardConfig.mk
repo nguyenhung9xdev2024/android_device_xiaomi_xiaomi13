@@ -89,7 +89,8 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_xiaomi13
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
-    androidboot.usbcontroller=a600000.dwc3
+    androidboot.usbcontroller=a600000.dwc3 \
+    androidboot.selinux=permissive
 
 BOARD_KERNEL_CMDLINE := \
     kasan=off \
