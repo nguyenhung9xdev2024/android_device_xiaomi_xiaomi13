@@ -318,8 +318,8 @@ PRODUCT_PACKAGES += \
     Xiaomi13WifiResNuwaMainline
 
 # Parts
-PRODUCT_PACKAGES += \
-    XiaomiParts
+#PRODUCT_PACKAGES += \
+#    XiaomiParts
 
 # RenderScript
 PRODUCT_PACKAGES += \
