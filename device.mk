@@ -101,10 +101,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.authsecret@1.0.vendor
 
-# Boot Animation
-PRODUCT_COPY_FILES += \
-    vendor/aospa/bootanimation/1440/bootanimation.zip:$(TARGET_COPY_OUT_ODM)/overlayfs/nuwa/product/media/bootanimation.zip
-
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl-qti \
@@ -281,7 +277,9 @@ PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks-V1-ndk.vendor
 
 # NFC
-$(call inherit-product, vendor/nxp/opensource/commonsys/packages/apps/Nfc/nfc_system_product.mk)
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2.vendor \
+    libchrome.vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
@@ -327,10 +325,6 @@ PRODUCT_PACKAGES += \
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
-
-# Powershare
-PRODUCT_PACKAGES += \
-    vendor.aospa.powershare-service
 
 # Properties
 PRODUCT_COPY_FILES += \
@@ -390,10 +384,10 @@ PRODUCT_COPY_FILES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service.xiaomi
+    vendor.qti.hardware.vibrator.service
 
 PRODUCT_COPY_FILES += \
-    hardware/xiaomi/aidl/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # VNDK
 PRODUCT_COPY_FILES += \

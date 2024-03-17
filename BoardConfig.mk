@@ -29,7 +29,16 @@ AB_OTA_PARTITIONS += \
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv9-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_VARIANT := cortex-a510
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryo385
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 
 # Boot
 BOARD_BOOT_HEADER_VERSION := 4
@@ -41,13 +50,12 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 
 # Boot control
-SOONG_CONFIG_NAMESPACES += ufsbsg
-SOONG_CONFIG_ufsbsg += ufsframework
-SOONG_CONFIG_ufsbsg_ufsframework := bsg
+$(call soong_config_set, ufsbsg, ufsframework, bsg)
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := kalama
 TARGET_NO_BOOTLOADER := true
+BOARD_USES_QCOM_HARDWARE := true
 
 # Build
 BUILD_BROKEN_DUP_RULES := true
@@ -63,8 +71,11 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_FS_CONFIG_GEN += $(DEVICE_PATH)/configs/config.fs
 
 # HIDL
+DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
+
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/configs/vintf/framework_matrix_xiaomi.xml
+    vendor/lineage/config/device_framework_matrix.xml
 
 DEVICE_MANIFEST_FILE += \
     $(DEVICE_PATH)/configs/vintf/manifest_kalama.xml \
@@ -83,11 +94,12 @@ BOARD_BOOTCONFIG := \
 BOARD_KERNEL_CMDLINE := \
     kasan=off \
     disable_dma32=on \
-    mtdoops.fingerprint=$(AOSPA_VERSION)
+    mtdoops.fingerprint=$(LINEAGE_VERSION)
 
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
+
 # Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 
@@ -129,9 +141,6 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 # Power
 TARGET_POWER_FEATURE_EXT_LIB := //$(DEVICE_PATH):libpowerfeature_ext_xiaomi13
 
-# PowerShare
-TARGET_POWERSHARE_NODE := /sys/class/qcom-battery/reverse_chg_mode
-
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
@@ -145,6 +154,7 @@ TARGET_RECOVERY_UI_MARGIN_HEIGHT := 80
 TARGET_USERIMAGES_USE_F2FS := true
 
 # SELinux
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 include device/xiaomi/sepolicy/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
@@ -192,11 +202,6 @@ BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-
-# Vibrator
-SOONG_CONFIG_NAMESPACES += XIAOMI_VIBRATOR
-SOONG_CONFIG_XIAOMI_VIBRATOR := USE_EFFECT_STREAM
-SOONG_CONFIG_XIAOMI_VIBRATOR_USE_EFFECT_STREAM := true
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
