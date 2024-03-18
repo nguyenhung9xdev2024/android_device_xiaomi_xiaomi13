@@ -110,7 +110,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
-    
+
 # Authsecret
 PRODUCT_PACKAGES += \
     android.hardware.authsecret@1.0.vendor
@@ -258,11 +258,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc \
+    init.qcom.rc \
+    init.qcom.recovery.rc \
+    init.qti.kernel.rc \
     init.mi_overlay.rc \
     init.mi_perf.rc \
     init.mi_service.rc \
     init.mi_udfps.rc \
-    ueventd.xiaomi.rc
+    ueventd.xiaomi.rc \
+    ueventd.qcom.rc \
+    init.class_main.sh \
+    init.kernel.post_boot.sh \
+    init.kernel.post_boot-kalama.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.early_boot.sh
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom \
